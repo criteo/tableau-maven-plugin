@@ -1,0 +1,67 @@
+<component-set>
+  <components>
+    <!-- Lifecycle for checking tableau files -->
+    <component>
+      <role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
+      <role-hint>tableau-check</role-hint>
+      <implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
+    </component>
+    <component>
+      <role>org.apache.maven.lifecycle.Lifecycle</role>
+      <implementation>org.apache.maven.lifecycle.Lifecycle</implementation>
+      <role-hint>tableau-check</role-hint>
+      <configuration>
+        <id>tableau-check</id>
+        <phases>
+          <phase>check</phase>
+        </phases>
+        <default-phases>
+          <check>com.criteo.tableau:tableau-maven-plugin:check-workbooks</check>
+        </default-phases>
+      </configuration>
+    </component>
+
+
+    <!-- Lifecycle for templating tableau files -->
+    <component>
+      <role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
+      <role-hint>tableau-templating</role-hint>
+      <implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
+    </component>
+    <component>
+      <role>org.apache.maven.lifecycle.Lifecycle</role>
+      <implementation>org.apache.maven.lifecycle.Lifecycle</implementation>
+      <role-hint>tableau-templating</role-hint>
+      <configuration>
+        <id>tableau-templating</id>
+        <phases>
+          <phase>template</phase>
+        </phases>
+        <default-phases>
+          <template>com.criteo.tableau:tableau-maven-plugin:template-workbooks</template>
+        </default-phases>
+      </configuration>
+    </component>
+
+    <!-- Lifecycle for untemplating tableau files -->
+    <component>
+      <role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
+      <role-hint>tableau-untemplating</role-hint>
+      <implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
+    </component>
+    <component>
+      <role>org.apache.maven.lifecycle.Lifecycle</role>
+      <implementation>org.apache.maven.lifecycle.Lifecycle</implementation>
+      <role-hint>tableau-untemplating</role-hint>
+      <configuration>
+        <id>tableau-untemplating</id>
+        <phases>
+          <phase>untemplate</phase>
+        </phases>
+        <default-phases>
+          <untemplate>com.criteo.tableau:tableau-maven-plugin:untemplate-workbooks</untemplate>
+        </default-phases>
+      </configuration>
+    </component>
+  </components>
+</component-set>
